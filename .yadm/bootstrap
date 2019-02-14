@@ -6,12 +6,19 @@ if [[ ! -f /usr/local/bin/antibody ]]; then
   curl -sL git.io/antibody | sh -s
 fi
 
-# Install miniconda
+# Install miniconda and install neovim integration
 miniconda=Miniconda3-latest-Linux-x86_64.sh
 
 if [[ ! -f $miniconda ]]; then
     cd $HOME
     wget --quiet https://repo.anaconda.com/miniconda/$miniconda
     chmod +x $miniconda
-    ./$miniconda -b -p $HOME/miniconda
+    ./$miniconda -b -p $HOME/miniconda3
+    source miniconda3/bin/activate
+    pip install pynvim
+fi
+
+# Install neovim plugins
+if command -v nvim >/dev/null 2>&1; then
+  nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
