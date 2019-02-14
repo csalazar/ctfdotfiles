@@ -21,5 +21,5 @@ fi
 
 # Install neovim plugins
 if command -v nvim >/dev/null 2>&1; then
-  nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+  nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall' &> /dev/null < /dev/tty
 fi
