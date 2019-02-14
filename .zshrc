@@ -80,10 +80,17 @@ path=("$HOME/.fzf/bin" $path)
 path=("$HOME/miniconda3/bin" $path)
 path=($^path(N-/))
 
+# default aliases
+alias ls="ls --color"
+
+# Change capslock to escape
+setxkbmap -option caps:escape
+
 ALIASES_FILE=$HOME/.aliases
 if [[ -f $ALIASES_FILE ]]; then
   source $ALIASES_FILE
 fi
 
-# Change capslock to escape
-setxkbmap -option caps:escape
+# Init byobu
+# It allows to use byobu on remote ssh connections too (instead of setting terminal shell)
+_byobu_sourced=1 . /usr/bin/byobu-launch
