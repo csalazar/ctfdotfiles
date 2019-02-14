@@ -6,7 +6,8 @@ if [[ ! -f /usr/local/bin/antibody ]]; then
   curl -sL git.io/antibody | sh -s
 fi
 
-# Install miniconda and neovim integration
+
+echo "[+] Installing miniconda .."
 miniconda=Miniconda3-latest-Linux-x86_64.sh
 
 if [[ ! -f $miniconda ]]; then
@@ -18,8 +19,10 @@ if [[ ! -f $miniconda ]]; then
     source miniconda3/bin/activate
     pip install pynvim
 fi
+echo "[+] Installation completed."
 
-# Install neovim plugins
+echo "[+] Installing neovim and its plugins .."
 if command -v nvim >/dev/null 2>&1; then
   nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall' &> /dev/null
 fi
+echo "[+] Installation completed."
