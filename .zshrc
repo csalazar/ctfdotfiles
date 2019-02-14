@@ -90,7 +90,3 @@ ALIASES_FILE=$HOME/.aliases
 if [[ -f $ALIASES_FILE ]]; then
   source $ALIASES_FILE
 fi
-
-# Init byobu
-# It allows to use byobu on remote ssh connections too (instead of setting terminal shell)
-_byobu_sourced=1 . /usr/bin/byobu-launch
