@@ -80,4 +80,10 @@ path=("$HOME/.fzf/bin" $path)
 path=("$HOME/miniconda3/bin" $path)
 path=($^path(N-/))
 
-source $HOME/.aliases
+ALIASES_FILE=$HOME/.aliases
+if [[ -f $ALIASES_FILE ]]; then
+  source $ALIASES_FILE
+fi
+
+# Change capslock to escape
+setxkbmap -option caps:escape
