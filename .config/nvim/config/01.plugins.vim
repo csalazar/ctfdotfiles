@@ -26,6 +26,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'christoomey/vim-tmux-navigator'
 
 " Python
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }

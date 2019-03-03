@@ -21,6 +21,12 @@ let g:gitgutter_sign_removed = '➖'
 " ---
 " fzf
 " ---
+" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
 let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit'

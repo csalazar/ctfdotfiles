@@ -18,12 +18,6 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Move among splits
-nmap <C-j> <C-W><C-J>
-nmap <C-k> <C-W><C-k>
-nmap <C-h> <C-W><C-h>
-nmap <C-l> <C-W><C-l>
-
 " Scroll down and up with centered screen
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
