@@ -62,10 +62,8 @@ if exists("*ToggleBackground") == 0
   function ToggleBackground()
     if &background == "dark"
       set background=light
-      let ayucolor="light"
     else
       set background=dark
-      let ayucolor="dark"
     endif
   endfunction
 
@@ -104,6 +102,7 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " ---
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 
 " ----
 " goyo

@@ -1,9 +1,3 @@
-" --------
-" supertab
-" --------
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-
 " -----------
 " quick-scope
 " -----------
@@ -47,6 +41,7 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+
 " -------------
 " indent-guides
 " -------------
@@ -85,46 +80,5 @@ let g:strip_whitelines_at_eof = 1
 " ---
 " ale
 " ---
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-
-" open list of error
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_open_list = 1
-let g:ale_list_window_size = 5
-
-
-" -------------
-" vim-auto-save
-" -------------
-let g:auto_save = 1
-let g:auto_save_silent = 1
-let g:auto_save_events = ["InsertLeave"]
-
-
-" ---------------------
-" vim-better-whitespace
-" ---------------------
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-
-" --------------
-" LanguageClient
-" --------------
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {}
-
-function! ConfigureLanguageClient()
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <buffer> <leader>r :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <buffer> <leader>n :call LanguageClient#textDocument_references()<CR>
-  setlocal omnifunc=LanguageClient#complete
-endfunction
+let g:ale_completion_enabled = 0

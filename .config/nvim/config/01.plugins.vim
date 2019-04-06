@@ -21,16 +21,10 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'christoomey/vim-tmux-navigator'
 
 " Python
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python' }
 
@@ -38,11 +32,10 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'vim-ruby/vim-ruby'
 
 " General
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'farmergreg/vim-lastplace'
-Plug '907th/vim-auto-save'
-Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
