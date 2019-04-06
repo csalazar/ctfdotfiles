@@ -6,7 +6,7 @@ fi
 # history
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=$HOME/.zsh_history
+HISTFILE=~/.zsh_history
 setopt histignorealldups sharehistory
 
 # navigation
@@ -78,15 +78,24 @@ path=("/sbin" $path)
 path=("/bin" $path)
 path=("$HOME/.fzf/bin" $path)
 path=("$HOME/miniconda3/bin" $path)
+path=("$HOME/go/bin" $path)
+path=("$HOME/.rbenv/bin" $path)
+path=("$HOME/.yarn/bin" $path)
 path=($^path(N-/))
 
-# default aliases
-alias ls="ls --color"
+# set gopath
+export GOPATH=$HOME/go
 
-# Change capslock to escape
-setxkbmap -option caps:escape
+# load nvm environment if available
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-ALIASES_FILE=$HOME/.aliases
-if [[ -f $ALIASES_FILE ]]; then
-  source $ALIASES_FILE
+# Init ruby environment if available
+if _has rbenv; then
+  eval "$(rbenv init -)"
+fi
+
+aliases_file=$HOME/.aliases
+if [[ ! -f aliases_file ]]; then
+  source $HOME/.aliases
 fi
