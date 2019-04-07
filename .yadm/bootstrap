@@ -22,6 +22,13 @@ if [[ ! -f $miniconda ]]; then
 fi
 echo "[+] Installation completed."
 
+echo "[+] Installing rbenv .."
+if [[ ! -d $HOME/.rbenv ]]; then
+  curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+  rbenv install 2.6.2
+fi
+echo "[+] Installation completed."
+
 echo "[+] Installing neovim and its plugins .."
 if command -v nvim >/dev/null 2>&1; then
   nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall' &> /dev/null
