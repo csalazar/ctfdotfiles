@@ -100,7 +100,7 @@ fi
 
 # load aliases
 aliases_file=$HOME/.aliases
-if [[ ! -f aliases_file ]]; then
+if [[ -f aliases_file ]]; then
   source $HOME/.aliases
 fi
 
