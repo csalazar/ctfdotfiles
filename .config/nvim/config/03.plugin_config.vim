@@ -82,3 +82,8 @@ let g:strip_whitelines_at_eof = 1
 " ---
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 0
+
+" ---
+" coc
+" ---
+let g:coc_global_extensions = ['coc-python', 'coc-json', 'coc-solargraph']
