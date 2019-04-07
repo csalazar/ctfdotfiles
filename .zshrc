@@ -90,12 +90,20 @@ export GOPATH=$HOME/go
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# Init ruby environment if available
+# init ruby environment if available
 if _has rbenv; then
   eval "$(rbenv init -)"
 fi
 
+# load fzf in the terminal
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# load aliases
 aliases_file=$HOME/.aliases
 if [[ ! -f aliases_file ]]; then
   source $HOME/.aliases
 fi
+
+# >>> conda initialize >>>
+[ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ] && source "$HOME/miniconda3/etc/profile.d/conda.sh"
+# <<< conda initialize <<<
