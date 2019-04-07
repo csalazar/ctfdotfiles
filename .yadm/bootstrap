@@ -8,7 +8,15 @@ fi
 
 
 echo "[+] Installing miniconda .."
-miniconda=Miniconda3-latest-Linux-x86_64.sh
+
+arch = $(uname -m)
+if [ "$arch" == "i686" ]; then
+  miniconda=Miniconda3-latest-Linux-x86.sh
+else
+  miniconda=Miniconda3-latest-Linux-x86_64.sh
+fi
+echo "[+] Using $miniconda .."
+
 
 if [[ ! -f $miniconda ]]; then
     cd $HOME
@@ -25,6 +33,7 @@ echo "[+] Installation completed."
 echo "[+] Installing rbenv .."
 if [[ ! -d $HOME/.rbenv ]]; then
   curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+  export PATH=$HOME/.rbenv/bin:$PATH
   rbenv install 2.6.2
 fi
 echo "[+] Installation completed."
