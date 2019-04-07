@@ -9,7 +9,7 @@ fi
 
 echo "[+] Installing miniconda .."
 
-arch = $(uname -m)
+arch=$(uname -m)
 if [ "$arch" == "i686" ]; then
   miniconda=Miniconda3-latest-Linux-x86.sh
 else
