@@ -38,6 +38,16 @@ if [[ ! -d $HOME/.rbenv ]]; then
 fi
 echo "[+] Installation completed."
 
+# Needed by vim-coc to install language servers
+echo "[+] Installing nvm .."
+if [[ ! -d $HOME/.nvm ]]; then
+  mkdir $HOME/.nvm
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+  nvm install --lts
+  node install yarn -g
+fi
+echo "[+] Installation completed."
+
 echo "[+] Installing neovim and its plugins .."
 if command -v nvim >/dev/null 2>&1; then
   nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall' &> /dev/null
