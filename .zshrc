@@ -83,27 +83,23 @@ path=("$HOME/.rbenv/bin" $path)
 path=("$HOME/.yarn/bin" $path)
 path=($^path(N-/))
 
-# set gopath
+# set languages directories
 export GOPATH=$HOME/go
-
-# load nvm environment if available
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # init ruby environment if available
 if _has rbenv; then
   eval "$(rbenv init -)"
 fi
 
-# load fzf in the terminal
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+files_to_source=(
+  $NVM_DIR/nvm.sh
+  $HOME/.fzf.zsh
+  $HOME/.aliases
+  $HOME/miniconda3/etc/profile.d/conda.sh
+)
 
-# load aliases
-aliases_file=$HOME/.aliases
-if [[ -f aliases_file ]]; then
-  source $HOME/.aliases
-fi
+for file in $files_to_source; do
+  [ -f $file ] && source $file
+done
 
-# >>> conda initialize >>>
-[ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ] && source "$HOME/miniconda3/etc/profile.d/conda.sh"
-# <<< conda initialize <<<
