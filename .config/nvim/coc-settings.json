@@ -16,6 +16,8 @@
     "pyls.configurationSources": ["pycodestyle", "pyflakes"],
     "pyls.plugins.pycodestyle.ignore": ["E501"],
     "pyls.plugins.pycodestyle.maxLineLength": 90,
+    "json.enable": true,
+    "coc.preferences.formatOnSaveFiletypes": ["json"],
     "solargraph.enable": true,
     "solargraph.formatting": true
 }

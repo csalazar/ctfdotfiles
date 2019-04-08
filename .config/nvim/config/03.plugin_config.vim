@@ -86,4 +86,9 @@ let g:ale_completion_enabled = 0
 " ---
 " coc
 " ---
-let g:coc_global_extensions = ['coc-python', 'coc-json', 'coc-solargraph']
+let g:coc_global_extensions = [
+  \ 'coc-pyls',
+  \ 'coc-json',
+  \ 'coc-solargraph',
+  \ 'coc-prettier'
+  \ ]
