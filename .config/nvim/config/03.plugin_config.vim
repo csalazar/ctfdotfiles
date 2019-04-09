@@ -75,6 +75,7 @@ let g:EasyMotion_smartcase = 1
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
 let g:strip_whitelines_at_eof = 1
+let g:strip_whitespace_confirm=0
 
 
 " ---
@@ -90,5 +91,6 @@ let g:coc_global_extensions = [
   \ 'coc-pyls',
   \ 'coc-json',
   \ 'coc-solargraph',
+  \ 'coc-tsserver',
   \ 'coc-prettier'
   \ ]
