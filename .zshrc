@@ -103,3 +103,7 @@ for file in $files_to_source; do
   [ -f $file ] && source $file
 done
 
+# exa setup
+if _has exa; then
+  alias ls="exa"
+fi
