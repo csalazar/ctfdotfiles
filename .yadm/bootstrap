@@ -40,9 +40,13 @@ echo "[+] Installation completed."
 
 # Needed by vim-coc to install language servers
 echo "[+] Installing nvm .."
-if [[ ! -d $HOME/.nvm ]]; then
-  mkdir $HOME/.nvm
+
+nvm_dir=$HOME/.nvm/
+if [[ ! -d $nvm_dir ]]; then
+  mkdir $nvm_dir
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+  source $nvm_dir/nvm.sh
   nvm install --lts
   node install yarn -g
 fi
