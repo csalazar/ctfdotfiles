@@ -107,3 +107,14 @@ done
 if _has exa; then
   alias ls="exa"
 fi
+
+# vte setup
+if [[ $TILIX_ID ]]; then
+  source /etc/profile.d/vte-2.91.sh
+fi
+
+# some aliases
+ca() {
+  conda activate $1
+  export PYTHONPATH=`python -c "import sys; print(':'.join(p for p in sys.path if p))"`
+}
