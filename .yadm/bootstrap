@@ -26,7 +26,7 @@ if [[ ! -f $miniconda ]]; then
 
     source miniconda3/bin/activate
     # development dependencies to run neovim without problems
-    pip install pynvim black isort ipython python-language-server
+    pip install pynvim black isort ipython
 fi
 echo "[+] Installation completed."
 
