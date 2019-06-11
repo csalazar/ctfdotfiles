@@ -88,9 +88,18 @@ let g:ale_completion_enabled = 0
 " coc
 " ---
 let g:coc_global_extensions = [
-  \ 'coc-pyls',
+  \ 'coc-python',
   \ 'coc-json',
   \ 'coc-solargraph',
   \ 'coc-tsserver',
   \ 'coc-prettier'
   \ ]
+
+
+" --------
+" NERDTree
+" --------
+let NERDTreeIgnore = ['\.pyc$']
+
+" quit if nerdtree is the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

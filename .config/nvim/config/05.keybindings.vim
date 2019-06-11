@@ -74,14 +74,21 @@ endif
 " ---
 " FZF
 " ---
-nnoremap <c-p> :FZF<cr>
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
 
-nnoremap <leader>o :History<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>t :Tags<CR>
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-nnoremap <silent> <Leader>AG :Ag <C-R><C-A><CR>
-xnoremap <silent> <Leader>ag y:Ag <C-R>"<CR>
+nnoremap <c-p> :call FZFOpen(':Files')<cr>
+
+nnoremap <leader>o :call FZFOpen(':History')<CR>
+nnoremap <leader>b :call FZFOpen(':Buffers')<CR>
+nnoremap <leader>t :call FZFOpen(':Tags')<CR>
+nnoremap <silent> <Leader>ag :call FZFOpen(':Ag <C-R><C-W>')<CR>
+nnoremap <silent> <Leader>AG :call FZFOpen(':Ag <C-R><C-A>')<CR>
+xnoremap <silent> <Leader>ag y:call FZFOpen(':Ag <C-R>"')<CR>
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 
@@ -108,3 +115,9 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " goyo
 " ----
 nnoremap <Leader>g :Goyo<CR>
+
+
+" --------
+" NERDTree
+" --------
+map <C-e> :NERDTreeToggle<CR>

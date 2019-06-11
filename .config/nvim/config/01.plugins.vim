@@ -46,6 +46,8 @@ Plug 'jsfaint/gen_tags.vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Visual
 Plug 'sheerun/vim-polyglot'
