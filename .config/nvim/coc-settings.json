@@ -2,6 +2,8 @@
     "json.enable": true,
     "tsserver.enable": true,
     "tsserver.formatOnType": false,
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true,
     "coc.preferences.formatOnSaveFiletypes": ["ts", "typescript", "json"],
     "tsserver.implicitProjectConfig.experimentalDecorators": true,
     "solargraph.enable": true,

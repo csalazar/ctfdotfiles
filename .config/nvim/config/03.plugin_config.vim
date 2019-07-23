@@ -83,7 +83,7 @@ let g:strip_whitespace_confirm=0
 " ---
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 0
-
+let g:ale_use_global_executables = 1
 " ---
 " coc
 " ---
