@@ -28,15 +28,6 @@ _has() {
   which $1>/dev/null 2>&1
 }
 
-# antibody setup
-if _has antibody; then
-  if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
-    antibody bundle < "$HOME/.antibody_bundle" > "$HOME/.zsh_plugins.sh"
-  fi
-
-  source "$HOME/.zsh_plugins.sh"
-fi
-
 # fasd setup
 if _has fasd; then
   fasd_cache="$ZSH_CACHE_DIR/fasd-init-cache"
@@ -46,9 +37,6 @@ if _has fasd; then
   source "$fasd_cache"
   unset fasd_cache
 fi
-
-# autoexecute suggestion with ctrl+space
-bindkey '^ ' autosuggest-execute
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
@@ -83,6 +71,18 @@ path=("$HOME/.rbenv/bin" $path)
 path=("$HOME/.yarn/bin" $path)
 path=("$HOME/.local/bin" $path)
 path=($^path(N-/))
+
+# antibody setup
+if _has antibody; then
+  if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
+    antibody bundle < "$HOME/.antibody_bundle" > "$HOME/.zsh_plugins.sh"
+  fi
+
+  source "$HOME/.zsh_plugins.sh"
+fi
+
+# autoexecute suggestion with ctrl+space
+bindkey '^ ' autosuggest-execute
 
 # set languages directories
 export GOPATH=$HOME/go
