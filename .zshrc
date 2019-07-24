@@ -81,6 +81,7 @@ path=("$HOME/miniconda3/bin" $path)
 path=("$HOME/go/bin" $path)
 path=("$HOME/.rbenv/bin" $path)
 path=("$HOME/.yarn/bin" $path)
+path=("$HOME/.local/bin" $path)
 path=($^path(N-/))
 
 # set languages directories
