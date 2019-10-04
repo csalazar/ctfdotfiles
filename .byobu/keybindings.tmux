@@ -1,5 +1,5 @@
-set -g default-shell /usr/bin/zsh
-set -g default-command /usr/bin/zsh
+set -g prefix F12
+unbind-key -n C-a
 
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"

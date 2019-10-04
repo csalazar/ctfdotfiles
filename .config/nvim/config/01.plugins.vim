@@ -26,10 +26,9 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Python
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins', 'for': 'python' }
-
-" Ruby
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-python/python-syntax', { 'for': 'python' }
+Plug 'kana/vim-textobj-user', { 'for': 'python' }
+Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
 " General
 Plug 'tpope/vim-fugitive'
@@ -42,12 +41,16 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
 Plug 'vimlab/split-term.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'jsfaint/gen_tags.vim'
-Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/vim-peekaboo'
+
+" Snippets
+Plug 'honza/vim-snippets'
+
+" Linting
+Plug 'w0rp/ale'
+Plug 'jsfaint/gen_tags.vim'
 
 " Visual
 Plug 'sheerun/vim-polyglot'
@@ -61,7 +64,8 @@ Plug 'unblevable/quick-scope' "to search better color scheme
 Plug 'ekalinin/Dockerfile.vim'
 
 " Theme
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'ryanoasis/vim-devicons'
+Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 

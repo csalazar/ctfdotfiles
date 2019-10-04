@@ -28,6 +28,15 @@ _has() {
   which $1>/dev/null 2>&1
 }
 
+# antibody setup
+if _has antibody; then
+  if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
+    antibody bundle < "$HOME/.antibody_bundle" > "$HOME/.zsh_plugins.sh"
+  fi
+
+  source "$HOME/.zsh_plugins.sh"
+fi
+
 # fasd setup
 if _has fasd; then
   fasd_cache="$ZSH_CACHE_DIR/fasd-init-cache"
@@ -37,6 +46,9 @@ if _has fasd; then
   source "$fasd_cache"
   unset fasd_cache
 fi
+
+# autoexecute suggestion with ctrl+space
+bindkey '^ ' autosuggest-execute
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
@@ -69,20 +81,7 @@ path=("$HOME/miniconda3/bin" $path)
 path=("$HOME/go/bin" $path)
 path=("$HOME/.rbenv/bin" $path)
 path=("$HOME/.yarn/bin" $path)
-path=("$HOME/.local/bin" $path)
 path=($^path(N-/))
-
-# antibody setup
-if _has antibody; then
-  if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
-    antibody bundle < "$HOME/.antibody_bundle" > "$HOME/.zsh_plugins.sh"
-  fi
-
-  source "$HOME/.zsh_plugins.sh"
-fi
-
-# autoexecute suggestion with ctrl+space
-bindkey '^ ' autosuggest-execute
 
 # set languages directories
 export GOPATH=$HOME/go
@@ -96,6 +95,7 @@ fi
 files_to_source=(
   $NVM_DIR/nvm.sh
   $HOME/.fzf.zsh
+  $HOME/.zsh_functions
   $HOME/.aliases
   $HOME/miniconda3/etc/profile.d/conda.sh
 )
@@ -104,18 +104,25 @@ for file in $files_to_source; do
   [ -f $file ] && source $file
 done
 
-# exa setup
-if _has exa; then
-  alias ls="exa"
-fi
-
 # vte setup
 if [[ $TILIX_ID ]]; then
   source /etc/profile.d/vte-2.91.sh
 fi
 
-# some aliases
-ca() {
-  conda activate $1
-  export PYTHONPATH=`python -c "import sys; print(':'.join(p for p in sys.path if p))"`
-}
+# utils setup
+if _has ag; then
+  export FZF_DEFAULT_COMMAND='ag -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+else
+  echo "[-] Install the silver searcher (sudo apt-get install silversearcher-ag)"
+fi
+
+if _has exa; then
+  alias ls="exa"
+else
+  alias ls="ls --color=auto"
+fi
+
+if _has direnv; then
+  eval "$(direnv hook zsh)"
+fi

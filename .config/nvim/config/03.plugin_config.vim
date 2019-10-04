@@ -7,40 +7,11 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " ----------
 " git-gutter
 " ----------
-let g:gitgutter_sign_added = '➕'
-let g:gitgutter_sign_modified = '❗'
-let g:gitgutter_sign_removed = '➖'
-
-
-" ---
-" fzf
-" ---
-" The Silver Searcher
-if executable('ag')
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-let g:fzf_action = {
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \ }
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_removed_first_line = ''
+let g:gitgutter_sign_modified_removed = ''
 
 " -------------
 " indent-guides
@@ -84,15 +55,20 @@ let g:strip_whitespace_confirm=0
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 0
 let g:ale_use_global_executables = 1
+
+highlight ALEErrorSign ctermbg=NONE ctermfg=NONE
+highlight ALEWarningSign ctermbg=NONE ctermfg=NONE
+let g:ale_sign_error = '🛑'
+let g:ale_sign_warning='🔶'
+
 " ---
 " coc
 " ---
 let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-json',
-  \ 'coc-solargraph',
-  \ 'coc-tsserver',
-  \ 'coc-prettier'
+  \ 'coc-prettier',
+  \ 'coc-snippets'
   \ ]
 
 
@@ -103,3 +79,25 @@ let NERDTreeIgnore = ['\.pyc$']
 
 " quit if nerdtree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" --------
+" gen_tags
+" --------
+let g:loaded_gentags#gtags = 1
+let g:gen_tags#ctags_auto_gen = 1
+
+
+" --------
+" snippets
+" --------
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"

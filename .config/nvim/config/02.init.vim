@@ -7,17 +7,21 @@ augroup qs_colors
   autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 augroup END
 
-set termguicolors
-set t_Co=256
-set background=dark
-colorscheme PaperColor
+if exists('$TMUX')
+  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+endif
 
-let g:airline_theme = 'papercolor'
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+set background=dark
+colorscheme onedark
+
+let g:airline_theme = 'onedark'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
-set noshowmode            " don't show --- INSERT --- under airline
 
 " -------------
 " Configuration
@@ -74,6 +78,7 @@ endif
 " Autocomplete menu
 set completeopt=longest,menuone,preview
 
+set nosmd  " Don't show last line
 
 " ----------------
 " Neovim Variables
