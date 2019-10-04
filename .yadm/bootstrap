@@ -3,7 +3,8 @@
 
 # Install antibody
 if [[ ! -f /usr/local/bin/antibody ]]; then
-  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
+  mkdir -p $HOME/.local/bin
+  curl -sfL git.io/antibody | sh -s - -b $HOME/.local/bin
 fi
 
 
