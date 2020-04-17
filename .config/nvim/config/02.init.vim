@@ -14,13 +14,10 @@ endif
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-set background=dark
-colorscheme onedark
 
-let g:airline_theme = 'onedark'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+colorscheme one
+set background=dark
+
 set laststatus=2
 
 " -------------
@@ -79,6 +76,7 @@ endif
 set completeopt=longest,menuone,preview
 
 set nosmd  " Don't show last line
+set nofoldenable
 
 " ----------------
 " Neovim Variables
@@ -86,4 +84,3 @@ set nosmd  " Don't show last line
 
 " set python paths
 let g:python3_host_prog = $HOME . '/miniconda3/bin/python'
-let g:python_host_prog = $HOME . '/miniconda3/envs/neovim2/bin/python'

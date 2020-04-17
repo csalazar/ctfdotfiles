@@ -32,10 +32,6 @@ vnoremap K :m '<-2<CR>gv=gv
 " Save file
 nnoremap <Leader>w :w<CR>
 
-" Next/Previous buffer with tab
-nnoremap <Tab> :bnext!<CR>
-nnoremap <S-Tab> :bprev!<CR><Paste>
-
 " Close file
 nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
 
@@ -70,10 +66,6 @@ if exists("*ToggleBackground") == 0
   command BG call ToggleBackground()
 endif
 
-" Update tmux title
-autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window 'vim " . expand("%:t") . "'")
-autocmd VimLeave * call system("tmux setw automatic-rename")
-
 " ----------
 " easymotion
 " ----------
@@ -91,15 +83,24 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " ---
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <leader>f <Plug>(ale_fix) <bar> :w<CR>
 
 
-" ----
-" goyo
-" ----
-nnoremap <Leader>g :Goyo<CR>
+" ----------
+" split-term
+" ----------
+nnoremap <C-`> :Term<CR>
 
 
-" --------
-" NERDTree
-" --------
-map <C-e> :NERDTreeToggle<CR>
+" ----------
+" airline
+" ----------
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9

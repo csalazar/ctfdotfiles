@@ -2,12 +2,13 @@
 #vim:syntax=shell
 
 # Install antibody
+echo "[+] Installing antibody .."
+
 if [[ ! -f /usr/local/bin/antibody ]]; then
-  mkdir -p $HOME/.local/bin
-  curl -sfL git.io/antibody | sh -s - -b $HOME/.local/bin
+  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 fi
 
-
+echo "[+] antibody installed."
 echo "[+] Installing miniconda .."
 
 arch=$(uname -m)
@@ -16,8 +17,6 @@ if [ "$arch" == "i686" ]; then
 else
   miniconda=Miniconda3-latest-Linux-x86_64.sh
 fi
-echo "[+] Using $miniconda .."
-
 
 if [[ ! -f $miniconda ]]; then
     cd $HOME
@@ -29,24 +28,32 @@ if [[ ! -f $miniconda ]]; then
     # development dependencies to run neovim without problems
     pip install pynvim black isort ipython jedi
 fi
-echo "[+] Installation completed."
 
-# Needed by vim-coc to install language servers
+echo "[+] miniconda installed."
 echo "[+] Installing nvm .."
 
 nvm_dir=$HOME/.nvm/
 if [[ ! -d $nvm_dir ]]; then
   mkdir $nvm_dir
-  curl -sSo- https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | bash
+  curl -sSo- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
 
   source $nvm_dir/nvm.sh
   nvm install --lts --no-progress
   node install yarn -g
 fi
-echo "[+] Installation completed."
 
+echo "[+] nvm installed."
+echo "[+] Installing rbenv .."
+
+if [[ ! -d $HOME/.rbenv ]]; then
+  curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+  rbenv install 2.6.6
+fi
+
+echo "[+] rbenv completed."
 echo "[+] Installing neovim and its plugins .."
+
 if command -v nvim >/dev/null 2>&1; then
   nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall' &> /dev/null
 fi
-echo "[+] Installation completed."
+echo "[+] neovim installed."

@@ -1,26 +1,3 @@
-" -----------
-" quick-scope
-" -----------
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-
-" ----------
-" git-gutter
-" ----------
-let g:gitgutter_sign_added = ''
-let g:gitgutter_sign_modified = ''
-let g:gitgutter_sign_removed = ''
-let g:gitgutter_sign_removed_first_line = ''
-let g:gitgutter_sign_modified_removed = ''
-
-" -------------
-" indent-guides
-" -------------
-let g:indent_guides_enable_on_vim_startup = 0
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-
-
 " --------------------
 " vim-multiple-cursors
 " --------------------
@@ -58,8 +35,9 @@ let g:ale_use_global_executables = 1
 
 highlight ALEErrorSign ctermbg=NONE ctermfg=NONE
 highlight ALEWarningSign ctermbg=NONE ctermfg=NONE
-let g:ale_sign_error = '🛑'
-let g:ale_sign_warning='🔶'
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = ''
+
 
 " ---
 " coc
@@ -67,37 +45,23 @@ let g:ale_sign_warning='🔶'
 let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-json',
-  \ 'coc-prettier',
-  \ 'coc-snippets'
+  \ 'coc-solargraph',
+  \ 'coc-snippets',
   \ ]
 
 
 " --------
-" NERDTree
-" --------
-let NERDTreeIgnore = ['\.pyc$']
+"  airline
+"  -------
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#show_tab_type = 0
 
-" quit if nerdtree is the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" --------
-" gen_tags
-" --------
-let g:loaded_gentags#gtags = 1
-let g:gen_tags#ctags_auto_gen = 1
-
-
-" --------
-" snippets
-" --------
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+let g:airline_theme = 'one'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#branch#enabled = 0
+let g:airline_section_c = ''

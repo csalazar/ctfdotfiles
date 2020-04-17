@@ -76,6 +76,7 @@ path=("/usr/bin" $path)
 path=("/usr/sbin" $path)
 path=("/sbin" $path)
 path=("/bin" $path)
+path=("/snap/bin" $path)
 path=("$HOME/.local/bin" $path)
 path=("$HOME/.fzf/bin" $path)
 path=("$HOME/miniconda3/bin" $path)
@@ -92,6 +93,10 @@ export NVM_DIR="$HOME/.nvm"
 if _has rbenv; then
   eval "$(rbenv init -)"
 fi
+
+# important variables
+
+export EDITOR="vim"
 
 files_to_source=(
   $NVM_DIR/nvm.sh
@@ -122,6 +127,10 @@ if _has exa; then
   alias ls="exa"
 else
   alias ls="ls --color=auto"
+fi
+
+if _has thefuck; then
+  eval $(thefuck --alias)
 fi
 
 if _has direnv; then

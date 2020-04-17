@@ -22,52 +22,30 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'christoomey/vim-tmux-navigator'
-
-" Python
-Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
-Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'kana/vim-textobj-user', { 'for': 'python' }
-Plug 'bps/vim-textobj-python', { 'for': 'python' }
+Plug 'w0rp/ale'
 
 " General
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
-Plug 'farmergreg/vim-lastplace'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
-Plug 'vimlab/split-term.vim'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 
-" Snippets
-Plug 'honza/vim-snippets'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vimlab/split-term.vim'
 
-" Linting
-Plug 'w0rp/ale'
-Plug 'jsfaint/gen_tags.vim'
-
-" Visual
 Plug 'sheerun/vim-polyglot'
-Plug 'machakann/vim-highlightedyank'
-Plug 'junegunn/goyo.vim'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'kshenoy/vim-signature'
-Plug 'unblevable/quick-scope' "to search better color scheme
-Plug 'ekalinin/Dockerfile.vim'
+Plug 'farmergreg/vim-lastplace'
 
 " Theme
-Plug 'ryanoasis/vim-devicons'
-Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " Search
 call plug#end()
