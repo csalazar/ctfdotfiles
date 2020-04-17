@@ -58,9 +58,7 @@ SPACESHIP_PROMPT_ORDER=(
   git           # Git section (git_branch + git_status)
   package       # Package version
   node          # Node.js section
-  golang        # Go section
   docker        # Docker section
-  aws           # Amazon Web Services section
   conda         # conda virtualenv section
   exec_time     # Execution time
   line_sep      # Line break
@@ -80,26 +78,13 @@ path=("/snap/bin" $path)
 path=("$HOME/.local/bin" $path)
 path=("$HOME/.fzf/bin" $path)
 path=("$HOME/miniconda3/bin" $path)
-path=("$HOME/go/bin" $path)
-path=("$HOME/.rbenv/bin" $path)
-path=("$HOME/.yarn/bin" $path)
+path=("$HOME/.gem/bin" $path)
 path=($^path(N-/))
 
-# set languages directories
-export GOPATH=$HOME/go
-export NVM_DIR="$HOME/.nvm"
-
-# init ruby environment if available
-if _has rbenv; then
-  eval "$(rbenv init -)"
-fi
-
 # important variables
-
 export EDITOR="vim"
 
 files_to_source=(
-  $NVM_DIR/nvm.sh
   $HOME/.fzf.zsh
   $HOME/.zsh_functions
   $HOME/.aliases
