@@ -11,5 +11,5 @@ let g:python_highlight_all = 1
 " ---
 " ale
 " ---
-let b:ale_linters = ["pylint", "mypy"]
+let b:ale_linters = ["pylint"]
 let b:ale_fixers = ["isort", "black"]

@@ -53,19 +53,6 @@ aug QFClose
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
 
-" Toggle background color
-if exists("*ToggleBackground") == 0
-  function ToggleBackground()
-    if &background == "dark"
-      set background=light
-    else
-      set background=dark
-    endif
-  endfunction
-
-  command BG call ToggleBackground()
-endif
-
 " ----------
 " easymotion
 " ----------
