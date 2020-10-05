@@ -33,6 +33,6 @@ echo "[+] miniconda installed."
 echo "[+] Installing neovim and its plugins .."
 
 if command -v nvim >/dev/null 2>&1; then
-  nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall' &> /dev/null
+  nvim -u $HOME/.config/nvim/config/01.plugins.vim '+PlugUpdate' '+PlugClean!' '+PlugInstall' '+qall' &> /dev/null
 fi
 echo "[+] neovim installed."
