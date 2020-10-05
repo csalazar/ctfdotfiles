@@ -28,15 +28,6 @@ _has() {
   which $1>/dev/null 2>&1
 }
 
-# antibody setup
-if _has antibody; then
-  if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
-    antibody bundle < "$HOME/.antibody_bundle" > "$HOME/.zsh_plugins.sh"
-  fi
-
-  source "$HOME/.zsh_plugins.sh"
-fi
-
 # fasd setup
 if _has fasd; then
   fasd_cache="$ZSH_CACHE_DIR/fasd-init-cache"
@@ -47,8 +38,6 @@ if _has fasd; then
   unset fasd_cache
 fi
 
-# autoexecute suggestion with ctrl+space
-bindkey '^ ' autosuggest-execute
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
@@ -57,7 +46,6 @@ SPACESHIP_PROMPT_ORDER=(
   host          # Hostname section
   git           # Git section (git_branch + git_status)
   package       # Package version
-  node          # Node.js section
   docker        # Docker section
   conda         # conda virtualenv section
   exec_time     # Execution time
@@ -78,25 +66,13 @@ path=("/snap/bin" $path)
 path=("$HOME/.local/bin" $path)
 path=("$HOME/.fzf/bin" $path)
 path=("$HOME/miniconda3/bin" $path)
-path=("$HOME/.rbenv/bin" $path)
-path=("$HOME/.yarn/bin" $path)
 path=($^path(N-/))
-
-# set languages directories
-export NVM_DIR="$HOME/.nvm"
-
-# init ruby environment if available
-if _has rbenv; then
-  export RBENV_VERSION="2.6.6"
-  eval "$(rbenv init -)"
-fi
 
 # important variables
 
 export EDITOR="vim"
 
 files_to_source=(
-  $NVM_DIR/nvm.sh
   $HOME/.fzf.zsh
   $HOME/.zsh_functions
   $HOME/.aliases
@@ -111,6 +87,19 @@ done
 if [[ $TILIX_ID ]]; then
   source /etc/profile.d/vte-2.91.sh
 fi
+
+# antibody setup
+if _has antibody; then
+  if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
+    antibody bundle < "$HOME/.antibody_bundle" > "$HOME/.zsh_plugins.sh"
+  fi
+
+  source "$HOME/.zsh_plugins.sh"
+
+  # autoexecute suggestion with ctrl+space
+  bindkey '^ ' autosuggest-execute
+fi
+
 
 # utils setup
 if _has ag; then
