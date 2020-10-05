@@ -2,8 +2,6 @@
     "json.enable": true,
     "python.jediEnabled": true,
     "python.linting.enabled": false,
-    "solargraph.enable": true,
-    "solargraph.formatting": true,
     "suggest.snippetIndicator": " ⚡",
     "suggest.minTriggerInputLength": 2
 }

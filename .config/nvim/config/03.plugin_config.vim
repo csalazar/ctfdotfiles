@@ -45,7 +45,6 @@ let g:ale_sign_warning = ''
 let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-json',
-  \ 'coc-solargraph',
   \ ]
 
 
