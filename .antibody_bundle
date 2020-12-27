@@ -2,7 +2,6 @@ zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
 zdharma/history-search-multi-word
-robbyrussell/oh-my-zsh path:plugins/sudo
 robbyrussell/oh-my-zsh path:plugins/common-aliases
 
 denysdovhan/spaceship-prompt
