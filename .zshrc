@@ -4,8 +4,8 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 # history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt histignorealldups sharehistory
 
@@ -83,11 +83,6 @@ for file in $files_to_source; do
   [ -f $file ] && source $file
 done
 
-# vte setup
-if [[ $TILIX_ID ]]; then
-  source /etc/profile.d/vte-2.91.sh
-fi
-
 # antibody setup
 if _has antibody; then
   if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
@@ -113,10 +108,6 @@ if _has exa; then
   alias ls="exa"
 else
   alias ls="ls --color=auto"
-fi
-
-if _has thefuck; then
-  eval $(thefuck --alias)
 fi
 
 if _has direnv; then
