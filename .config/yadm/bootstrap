@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Install antibody
-echo "[+] Installing antibody .."
+# Install antigen
+echo "[+] Installing antigen .."
 
-if [[ ! -f /usr/local/bin/antibody ]]; then
-  curl -sfL git.io/antibody | sh -s - -b $HOME/.local/bin
+if [[ ! -f $HOME/.antigen.zsh ]]; then
+  wget -q -O ~/.antigen.zsh git.io/antigen
 fi
 
 echo "[+] antibody installed."

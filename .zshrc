@@ -73,6 +73,7 @@ path=($^path(N-/))
 export EDITOR="vim"
 
 files_to_source=(
+  $HOME/.antigen.zsh
   $HOME/.fzf.zsh
   $HOME/.zsh_functions
   $HOME/.aliases
@@ -83,13 +84,17 @@ for file in $files_to_source; do
   [ -f $file ] && source $file
 done
 
-# antibody setup
-if _has antibody; then
-  if [[ ! -e "$HOME/.zsh_plugins.sh" ]]; then
-    antibody bundle < "$HOME/.antibody_bundle" > "$HOME/.zsh_plugins.sh"
-  fi
+# antigensetup
+if _has antigen; then
+  antigen use oh-my-zsh
+  antigen bundle common-aliases
 
-  source "$HOME/.zsh_plugins.sh"
+  antigen bundle zdharma/fast-syntax-highlighting
+  antigen bundle zsh-users/zsh-autosuggestions
+  antigen bundle zsh-users/zsh-completions
+  antigen bundle zdharma/history-search-multi-word
+  antigen bundle denysdovhan/spaceship-prompt
+  antigen apply
 
   # autoexecute suggestion with ctrl+space
   bindkey '^ ' autosuggest-execute
