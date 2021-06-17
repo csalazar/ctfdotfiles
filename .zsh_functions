@@ -1,0 +1,32 @@
+delete_volume() {
+  IFS=$'\n'
+  for docker_id in $(docker ps -a --filter volume=$1 --format {{.ID}})
+  do
+    docker stop $docker_id
+    docker rm $docker_id
+  done
+  docker volume rm $1
+}
+
+wt() {
+  git branch $1
+  git worktree add ../$1 $1
+  cd ../$1
+}
+
+create_branch_with_last_commit() {
+  git branch $1
+  git reset --keep HEAD~1
+  git co $1
+}
+
+nvim() {
+  BACKGROUND=$(kitty @ get-colors | rg '^background\s+(.*)' -r '$1')
+
+  if [[ "$BACKGROUND" == "#e0e0e0" ]];
+  then
+    env nvim --cmd "let theme = 'light'" $@
+  else
+    env nvim --cmd "let theme = 'dark'" $@
+  fi
+}
