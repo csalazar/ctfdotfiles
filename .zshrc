@@ -24,6 +24,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name ''
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate
 
+PS1="%B%n@%m %1~ %#%b "
+
 _has() {
   which $1>/dev/null 2>&1
 }
@@ -39,22 +41,6 @@ if _has fasd; then
 fi
 
 
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  package       # Package version
-  docker        # Docker section
-  conda         # conda virtualenv section
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-
 typeset -U path
 path=("/usr/local/bin" $path)
 path=("/usr/local/sbin" $path)
@@ -69,14 +55,14 @@ path=("$HOME/miniconda3/bin" $path)
 path=($^path(N-/))
 
 # important variables
-
-export EDITOR="vim"
+alias vim=nvim
+export EDITOR="nvim"
 
 files_to_source=(
   $HOME/.antigen.zsh
   $HOME/.fzf.zsh
   $HOME/.zsh_functions
-  $HOME/.aliases
+  $HOME/.zshrc_local
   $HOME/miniconda3/etc/profile.d/conda.sh
 )
 
@@ -88,25 +74,24 @@ done
 if _has antigen; then
   antigen use oh-my-zsh
   antigen bundle common-aliases
+  antigen bundle git-prompt
 
   antigen bundle zdharma/fast-syntax-highlighting
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-completions
   antigen bundle zdharma/history-search-multi-word
-  antigen bundle denysdovhan/spaceship-prompt
   antigen apply
 
   # autoexecute suggestion with ctrl+space
   bindkey '^ ' autosuggest-execute
 fi
 
-
 # utils setup
 if _has ag; then
   export FZF_DEFAULT_COMMAND='ag -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 else
-  echo "[-] Install the silver searcher (sudo apt-get install silversearcher-ag)"
+  echo "[-] Install the silver searcher package"
 fi
 
 if _has exa; then
@@ -117,4 +102,13 @@ fi
 
 if _has direnv; then
   eval "$(direnv hook zsh)"
+fi
+
+if _has rbenv; then
+  export RBENV_VERSION="2.7.2"
+  eval "$(rbenv init -)"
+fi
+
+if _has bat; then
+  export MANPAGER="sh -c 'col -bx |bat -l man -p'"
 fi
