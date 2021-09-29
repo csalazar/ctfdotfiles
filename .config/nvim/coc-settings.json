@@ -1,7 +1,0 @@
-{
-    "json.enable": true,
-    "python.jediEnabled": true,
-    "python.linting.enabled": false,
-    "suggest.snippetIndicator": " ⚡",
-    "suggest.minTriggerInputLength": 2
-}

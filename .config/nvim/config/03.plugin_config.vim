@@ -39,15 +39,6 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = ''
 
 
-" ---
-" coc
-" ---
-let g:coc_global_extensions = [
-  \ 'coc-python',
-  \ 'coc-json',
-  \ ]
-
-
 " --------
 "  airline
 "  -------
