@@ -48,7 +48,7 @@
     },
     "search.useGlobalIgnoreFiles": true,
     "terminal.integrated.fontSize": 16,
-    "workbench.colorTheme": "Quiet Light",
+    "workbench.colorTheme": "Default Light+",
     "vim.easymotion": true,
     "vim.sneak": true,
     "vim.incsearch": true,
